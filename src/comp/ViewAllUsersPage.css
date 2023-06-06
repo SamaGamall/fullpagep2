@@ -1,3 +1,45 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --primary-color: #c52a1e;
+  --secondary-color: #555;
+  --background-color: #fff;
+
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /*========== Font and typography ==========*/
+  --body-font: "Poppins", sans-serif;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--background-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== USER CARD ===============*/
 .user-card-container {
   display: flex;
   justify-content: center;
@@ -13,9 +55,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--background-color);
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
   border-radius: 5px;
 }
 
@@ -32,18 +74,30 @@
 
 .user-name {
   font-weight: bold;
+  color: var(--primary-color);
 }
 
-.request-button {
+.user-blood-type {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+.request-button,
+.view-profile-button {
   margin-top: 10px;
   padding: 8px 16px;
-  background-color: #a52817;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Adjust margin and padding */
+  margin-right: 5px;
 }
 
-.request-button:hover {
-  background-color: #a52817;
+.request-button:hover,
+.view-profile-button:hover {
+  background-color: #a21d18;
+  text-decoration: none; /* Remove underline on hover */
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './ViewAllUsersPage.css';
 
 function ViewAllUsersPage() {
@@ -43,6 +44,9 @@ function ViewAllUsersPage() {
                 <button className="request-button" onClick={() => handleRequest(user.id)}>
                   Request
                 </button>
+                <Link to={`/profile/${user.id}`} className="view-profile-button">
+                  View Profile
+                </Link>
               </div>
             </div>
           ))}
