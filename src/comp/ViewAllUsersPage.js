@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ViewAllUsersPage.css';
 
 function ViewAllUsersPage() {
   const [userDataFromApi, setUserDataFromApi] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get('https://jsonplaceholder.typicode.com/posts')
       .then((res) => {
-        setUserDataFromApi(res.data);
+        setUserDataFromApi(res.data); // Assuming the returned data is an array of user objects
         setLoading(false);
       })
       .catch(() => {
@@ -22,7 +23,10 @@ function ViewAllUsersPage() {
 
   const handleRequest = (userId) => {
     console.log('Request sent for user:', userId);
-    // Implement the logic for making a request here
+    // Add logic to handle the request as needed
+
+    // Navigate to the request page
+    navigate(`/request/${userId}`);
   };
 
   return (

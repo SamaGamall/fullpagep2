@@ -22,7 +22,7 @@ const Navbarinside = () => {
     
       <Link href='' className="leftsidenav">Home</Link>
       
-      <Link href="" className="leftsidenav" >available donors</Link>
+      <Link to="/ViewAllUsersPages" className="leftsidenav" >available donors</Link>
       <Link href=""  className="leftsidenav" > donor center location</Link>
       <Link href=""  className="leftsidenav" ><NotificationsIcon/>private blood request</Link>
     

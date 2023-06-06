@@ -13,7 +13,7 @@ const Userprofile = () => {
 
   useEffect(() => {
     // Fetch user profile data from the backend API
-    axios.get('YOUR_API_ENDPOINT/userprofile')
+    axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(response => {
         setUserProfile(response.data);
         setIsActive(response.data.isActive);

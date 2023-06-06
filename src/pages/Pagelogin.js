@@ -10,7 +10,7 @@ const Pagelogin = () => {
   return (
     <>
   
-    <ViewAllUsersPage />
+    <Login />
     </>
   );
 }

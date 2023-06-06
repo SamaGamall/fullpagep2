@@ -14,7 +14,7 @@ import Popper from 'popper.js';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import Userprofile from "./comp/Userprofile";
 import Donationlocation from "./pages/donationlocation";
-
+import ViewAllUsersPages from './pages/ViewAllUsersPages';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +50,11 @@ const router = createBrowserRouter([
   {
     path: "/insideHome",
     element: <InsideHome />,
+  
+  },
+  {
+    path: "/viewAllUsersPages",
+    element: <ViewAllUsersPages />,
   
   },
 
