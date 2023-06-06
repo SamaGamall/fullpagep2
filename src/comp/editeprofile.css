@@ -1,0 +1,145 @@
+body {
+  color: #1a202c;
+  background-color: hsl(214, 32%, 91%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container1-2 .row {
+  overflow: hidden;
+}
+
+.btn6 {
+  color: #fff;
+  text-decoration: none;
+  background: #A4152D;
+  box-shadow: none;
+  color: white;
+  padding: 1rem 1rem;
+  margin-right: 2rem;
+  border: none;
+  border-radius: 12px;
+  font-family: Montserrat, sans-serif;
+}
+
+.btn6:hover,
+.btn6:active {
+  background-color: #b80d29;
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.container1-2 .card3 .card-body {
+  padding: 3rem 2rem;
+}
+
+.account-settings .user-profile {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.account-settings .user-profile .user-avatar img {
+  width: 90px;
+  height: 90px;
+  border-radius: 100px;
+}
+
+.account-settings .user-profile h5.user-name {
+  margin: 0.5rem 0 0;
+}
+
+.account-settings .user-profile h6.user-email {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #9fa8b9;
+}
+
+.account-settings .about {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.account-settings .about h5 {
+  margin-bottom: 15px;
+  color: #007ae1;
+}
+
+.account-settings .about p {
+  font-size: 0.825rem;
+}
+
+.form-control {
+  border: 1px solid #cfd1d8;
+  border-radius: 2px;
+  font-size: 0.825rem;
+  background: #ffffff;
+  color: #2e323c;
+}
+
+.card3 {
+  background: #ffffff;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 1rem;
+}
+.edit-photo {
+  position: relative;
+  display: inline-block;
+}
+
+.edit-photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(156, 31, 31, 0.5);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.edit-photo:hover::before {
+  opacity: 1;
+}
+
+.edit-photo label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #A4152D;
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.edit-photo:hover label {
+  opacity: 1;
+}
+
+.edit-photo label::before {
+  content: "Edit";
+}
+
+/* Rest of the existing CSS rules */
+
+
+
+@media screen and (max-width: 900px) {
+  .container1-2 .row {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .btn6 {
+    margin-top: 2rem;
+    margin-right: 2.2rem;
+  }
+}

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+main{
+  width: 100%;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+main{
+    width: 100%;
+}
+footer{
+    position:static;
+    width: auto;
+    bottom: 0;
+    left:0;
+    padding: 40px 20px;
+    background:rgba(164,21,45,255);
+    box-shadow: 0 16px 70px -8px rgb(248, 245, 245);
+    border-radius: 20px 20px 0 0;
+    transition : 0.3s linear;
+
+
+}
+.container1{
+    max-width: 1240px;
+    padding: 30px 40px;
+    
+    margin: auto;
+}
+.contant-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+}
+.logo-profile.logo-area{
+    display: flex;
+    align-items:center ;
+    margin-bottom: 10rem;
+
+}
+.logo-area img{
+    
+    height: 50px;
+    width: 50px;
+
+}
+.logo-area .logo-name{
+    font-size: 1.5rem;
+    font-weight: 700;
+    
+    margin: 1rem 1rem;
+    color: white;
+    
+}
+.deskarea{
+    max-width: 320px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+.deskarea p{
+    color: white;
+    font-weight: 400;
+    line-height: 28px;
+
+}
+
+.service-area{
+    display: flex;
+
+}
+
+.service-header{
+    margin-right: 100px;
+
+}  
+
+.service-area .service-header img{
+    
+    height: 15px;
+    width: 20px;
+   
+}  
+li.service-name{
+    color: white;
+    font-weight:600 ;
+    margin-bottom: 40px;
+    padding-top: 4px;
+    padding-right: 200px;
+    text-decoration: none;
+}
+
+.service-header p{
+    padding: 10px 0;
+    color: white;
+    font-weight: 200;
+    text-align: center;
+    
+
+}
+.service-header hr{
+    height: 3px;
+    width: 30px; 
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #ee3d32;
+}
+.service-header li a{
+    color: white;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-weight: 400;
+    text-decoration: none;
+    justify-content: space-between;
+}
+.service-name2 {
+
+float: right;
+
+}  
+.service-name2 li{
+  
+  float: left;
+  
+  }  
+  .service-name2 i{
+  font-size:25px;
+  }
+.service-header li a:hover{
+    color:  rgb(247, 92, 64);
+}
+.service-header li{
+    margin-bottom: 20px;
+}
+ hr{
+    height: 1px;
+    border: none;
+    background-color: antiquewhite;
+    margin-bottom: 1rem;
+ }
+ .footer-button{
+    display: flex;
+    justify-content: space-between;
+    align-items:normal;
+    font-size: 0.75rem;
+    float: left;
+    
+    
+ }
+ .copy-right{
+    color: white;
+    display:flex;
+    align-items:normal;
+    
+ }
+ .copy-right span{
+    margin-left: 8px;
+    font-weight: 400;
+    letter-spacing: 0.135rem;
+ }
+ 
+ 
+ @media screen and (max-width:800px) {
+  
+    .contant-footer{
+      width: auto;
+        flex-wrap: wrap;
+        justify-content: left;
+         
+    }
+    .service-area{
+        flex-wrap: wrap;
+        justify-content: left; 
+    }
+    .service-header{
+        margin-left: 0;
+        margin-right: 0px;
+        
+    }
+    
+    .footer-button{
+        position: absolute;
+        margin: 2rem;
+    }
+ }
+ 

@@ -1,0 +1,110 @@
+body {margin:0;}
+
+.iconbar {
+  width: 100%;
+  background-color:white;
+  overflow: auto;
+  font-size: 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.iconbar a {
+  float: right;
+  width: 10%;
+  text-align: center;
+  padding: 10px 0;
+  transition: 0.03s;
+  color: black;
+  font-size: 40px;
+}
+ 
+
+
+.active1 {
+  background-color: #04AA6D;
+}
+
+.iconbar .leftsidenav{
+ float: left;
+  width: auto;
+  text-align: center;
+  padding: 10px 30px;
+  transition: 0.03s;
+  color: black;
+  font-size: 15px;
+  text-decoration: none;
+  font-family: Montserrat,sans-serif;
+padding-top: 2rem;
+}
+.iconbar .leftsidenav:hover{
+  border-bottom-style: solid;
+  border-color:rgba(164,21,45,255);
+  padding: 10px 30px;
+  transition: 0.03s;
+  border-radius: 4px;
+  border-width: 0.3rem;
+  padding-top: 2rem;
+  text-decoration: none;
+}
+.iconbar a.icon4 {
+  display:none;
+  
+  float: right;
+  padding-top: 1px;
+  transition: 0.00s;
+  border-radius: 0px;
+  border-width: 0.0rem;
+  padding-bottom: 0.0rem;
+  
+    
+    
+  }
+.icon3:hover{
+color:#a4152d;
+  }
+@media screen and (max-width: 800px){
+  .iconbar a{
+    font-size: 20px;
+  }
+.iconbar .leftsidenav {
+    text-align: center;
+ font-size: medium;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .iconbar .leftsidenav:not(:first-child) {display: none;}
+  .iconbar a.icon4 {
+    float: right;
+    display: block;
+  }
+  }
+  
+@media screen and (max-width: 1000px) {
+  .iconbar.responsive {position: relative;}
+  .iconbar.responsive a.icon4 {
+    position: absolute;
+    right: 3rem;
+    top: 0.5rem;
+  }
+  .iconbar.responsive .leftsidenav {
+    float: none;
+    display: block;
+    text-align: center;
+    font-size: medium;
+  }
+  
+  .iconbar a.icon4{
+    
+    position: absolute;
+    right: 3rem;
+    color: black;
+    top: 0.5rem;
+   }
+   .iconbar a.icon3{
+    position: absolute;
+    right: 0rem;
+    color: black;
+    top: 0rem;
+   }
+  
+  }
