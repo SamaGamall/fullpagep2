@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './editeprofile.css';
 
+
 const Editeprofile = () => {
   const fileInputRef = useRef(null);
   const [fullName, setFullName] = useState('Yuki Hayashi');
@@ -20,7 +21,7 @@ const Editeprofile = () => {
     setUpdatedEmail(e.target.value);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     if (updatedFullName !== '') {
       setFullName(updatedFullName);
     }
@@ -29,7 +30,26 @@ const Editeprofile = () => {
     }
     setUpdatedFullName('');
     setUpdatedEmail('');
+
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fullName: updatedFullName, email: updatedEmail }),
+      });
+
+      if (response.ok) {
+        console.log('Profile updated successfully');
+      } else {
+        console.error('Failed to update profile');
+      }
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
   };
+
 
   return (
     <div className="container1-2" style={{ overflow: 'hidden' }}>

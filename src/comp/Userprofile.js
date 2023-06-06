@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { Chip } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import './Userprofile.css';
 import axios from 'axios';
+
 
 const Userprofile = () => {
   const [userProfile, setUserProfile] = useState({});

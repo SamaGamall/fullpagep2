@@ -99,5 +99,6 @@ img {
 .request-button:hover,
 .view-profile-button:hover {
   background-color: #a21d18;
-  text-decoration: none; /* Remove underline on hover */
+  text-decoration: none;
+  color: #fff; /* Remove underline on hover */
 }
