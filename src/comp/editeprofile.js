@@ -4,8 +4,8 @@ import './editeprofile.css';
 
 const Editeprofile = () => {
   const fileInputRef = useRef(null);
-  const [fullName, setFullName] = useState('Yuki Hayashi');
-  const [email, setEmail] = useState('yuki@Maxwell.com');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
   const [updatedFullName, setUpdatedFullName] = useState('');
   const [updatedEmail, setUpdatedEmail] = useState('');
 
@@ -186,6 +186,7 @@ const Editeprofile = () => {
                       id="cancel"
                       name="cancel"
                       className="btn6"
+                      
                     >
                       Cancel
                     </button>

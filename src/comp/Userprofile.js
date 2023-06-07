@@ -13,7 +13,6 @@ const Userprofile = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    // Fetch user profile data from the backend API using the provided ID
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(response => {
         setUserProfile(response.data);
@@ -94,7 +93,7 @@ const Userprofile = () => {
                     <h6 className="mb-0">Address</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                    {userProfile.address}
+                    {userProfile.address && `${userProfile.address.street}, ${userProfile.address.suite}, ${userProfile.address.city}, ${userProfile.address.zipcode}`}
                   </div>
                 </div>
                 <hr />
