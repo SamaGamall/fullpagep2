@@ -19,10 +19,12 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/Pagelogin" element={<Pagelogin />} />
       <Route path="/Signupage" element={<Signupage />} />
       <Route path="/donationlocation" element={<Donationlocation/>} />
       <Route path="/ViewAllUsersPages" element={<ViewAllUsersPages />} />
       <Route path="/editep" element={<Editep />} />
+      <Route path="/InsideHome" element={<InsideHome />} />
     </Routes>
   );
 }
