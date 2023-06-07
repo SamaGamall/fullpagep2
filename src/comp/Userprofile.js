@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link,useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { Chip } from '@mui/material';
 import Stack from '@mui/material/Stack';
@@ -7,14 +7,14 @@ import Switch from '@mui/material/Switch';
 import './Userprofile.css';
 import axios from 'axios';
 
-
 const Userprofile = () => {
+  const { id } = useParams();
   const [userProfile, setUserProfile] = useState({});
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    // Fetch user profile data from the backend API
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    // Fetch user profile data from the backend API using the provided ID
+    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(response => {
         setUserProfile(response.data);
         setIsActive(response.data.isActive);
@@ -22,7 +22,7 @@ const Userprofile = () => {
       .catch(error => {
         console.error('Error fetching user profile:', error);
       });
-  }, []);
+  }, [id]);
 
   const handleChange = (event) => {
     setIsActive(event.target.checked);

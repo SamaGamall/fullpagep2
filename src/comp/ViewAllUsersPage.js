@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './ViewAllUsersPage.css';
 
 function ViewAllUsersPage() {
@@ -8,10 +8,11 @@ function ViewAllUsersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
+  const location = useLocation();
+  
   useEffect(() => {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('https://jsonplaceholder.typicode.com/users')
       .then((res) => {
         setUserDataFromApi(res.data); // Assuming the returned data is an array of user objects
         setLoading(false);
@@ -48,9 +49,13 @@ function ViewAllUsersPage() {
                 <button className="request-button" onClick={() => handleRequest(user.id)}>
                   Request
                 </button>
-                <Link to={`/profile/${user.id}`} className="view-profile-button">
-                  View Profile
-                </Link>
+                <Link
+  to={`/profile/${user.id}`}
+  state={{ from: location.pathname, userId: user.id }}
+  className="view-profile-button"
+>
+  View Profile
+</Link>
               </div>
             </div>
           ))}
