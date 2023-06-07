@@ -20,7 +20,7 @@ const Navbarinside = () => {
   
     <div className="iconbar" id="myTopnav">
     
-      <Link href='' className="leftsidenav">Home</Link>
+      <Link to="/" className="leftsidenav">Home</Link>
       
       <Link to="/ViewAllUsersPages" className="leftsidenav" >available donors</Link>
       <Link to="/Donationlocation"  className="leftsidenav" > donor center location</Link>

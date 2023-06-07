@@ -18,6 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/profile/:id" element={<Profile />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/Signupage" element={<Signupage />} />
       <Route path="/donationlocation" element={<Donationlocation/>} />
       <Route path="/ViewAllUsersPages" element={<ViewAllUsersPages />} />
