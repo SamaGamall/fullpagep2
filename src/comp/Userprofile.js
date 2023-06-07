@@ -57,7 +57,7 @@ const Userprofile = () => {
                     <h6 className="mb-0">Full Name</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                    {userProfile.fullName}
+                    {userProfile.name}
                   </div>
                 </div>
                 <hr />

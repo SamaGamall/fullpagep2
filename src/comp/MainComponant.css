@@ -25,7 +25,9 @@ body {
   padding: 0;
 
 }
-
+.main-grid h2{
+  padding-left: 250px;
+}
 a {
   text-decoration: none;
   color: var(--second-color);
