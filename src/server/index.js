@@ -11,13 +11,13 @@ const authRouter = require('./routes/auth.route')
 mongoose.Promise = global.Promise
 mongoose.set('strictQuery', false)
 
-mongoose.connect("mongodb://127.0.0.1:27017/blood_bank", {
+mongoose.connect("mongodb+srv://GP:504rHpJKhsEtYjUg@cluster0.s4lzl5c.mongodb.net/", {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => { console.log(`Database connected successfully @ ${"mongodb://127.0.0.1:27017/blood_bank"}`) })
+}).then(() => { console.log(`Database connected successfully @ ${"mongodb+srv://GP:504rHpJKhsEtYjUg@cluster0.s4lzl5c.mongodb.net/"}`) })
 
 mongoose.connection.on('error', (err) => {
-    throw new Error(`Unable to connect to database: ${"mongodb://127.0.0.1:27017/blood_bank"}\n${err}`)
+    throw new Error(`Unable to connect to database: ${"mongodb+srv://GP:504rHpJKhsEtYjUg@cluster0.s4lzl5c.mongodb.net/"}\n${err}`)
 })
 const app = express()
 app.use(bodyParser.json())
