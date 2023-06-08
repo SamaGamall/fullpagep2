@@ -1,7 +1,7 @@
 import React from "react";
-
-import  { useState } from 'react';
-
+import PrivateRoute from './comp/PrivateRoute';
+import { useState } from 'react';
+import { AuthProvider } from './comp/AuthContext';
 import Home from "./pages/home";
 import Profile from "./pages/profile";
 import { Routes, Route } from 'react-router-dom';
@@ -29,18 +29,20 @@ function App() {
     isActive: false,
     Photo: "",
   });
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/profile/:id" element={<Profile />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/Pagelogin" element={<Pagelogin />} />
-      <Route path="/Signupage" element={<Signupage />} />
-      <Route path="/donationlocation" element={<Donationlocation/>} />
-      <Route path="/ViewAllUsersPages" element={<ViewAllUsersPages />} />
-      <Route path="/editep" element={<Editep />} />
-      <Route path="/InsideHome" element={<InsideHome />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/Pagelogin" element={<Pagelogin />} />
+        <Route path="/Signupage" element={<Signupage />} />
+        <Route path="/profile/:id" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/InsideHome" element={<PrivateRoute><InsideHome /></PrivateRoute>} />
+        <Route path="/donationlocation" element={<PrivateRoute><Donationlocation /></PrivateRoute>} />
+        <Route path="/ViewAllUsersPages" element={<PrivateRoute><ViewAllUsersPages /></PrivateRoute>} />
+        <Route path="/editep" element={<PrivateRoute><Editep /></PrivateRoute>} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 

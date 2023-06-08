@@ -11,6 +11,7 @@ const Userprofile = () => {
   const { id } = useParams();
   const [userProfile, setUserProfile] = useState({});
   const [isActive, setIsActive] = useState(false);
+  const loggedInUserId = localStorage.getItem('userId'); // Assuming user id is stored in local storage
 
   useEffect(() => {
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
@@ -22,11 +23,10 @@ const Userprofile = () => {
         console.error('Error fetching user profile:', error);
       });
   }, [id]);
-
+  
   const handleChange = (event) => {
     setIsActive(event.target.checked);
   };
-
   return (
     <div className="container1-3" style={{ overflow: 'hidden' }}>
       <div className="main-body">
@@ -107,9 +107,9 @@ const Userprofile = () => {
                 </div>
                 <hr />
                 <div className="row">
-                  <div className="col-sm-12">
-                    <Link className="btn5" to="/editep">Edit</Link>
-                  </div>
+                <div className="col-sm-12">
+          {loggedInUserId === id && <Link className="btn5" to="/editep">Edit</Link>}
+        </div>
                 </div>
               </div>
             </div>

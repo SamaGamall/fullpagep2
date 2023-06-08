@@ -2,9 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./signup.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -14,36 +13,38 @@ const validationSchema = Yup.object().shape({
   phoneNumber: Yup.string().required("Required"),
   age: Yup.number().required("Required").positive().integer(),
   gender: Yup.string().oneOf(["Male", "Female"]).required("Required"),
-  photo: Yup.mixed(),
+  bloodType: Yup.string().oneOf(["A", "B", "AB", "O"]).required("Required"),
 });
 
 const Signup = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await axios.post("https://jsonplaceholder.typicode.com/users", values);
+      // modify the url to your actual signup api endpoint
+      const response = await axios.post("http://localhost:5000/api/v1/auth/signUp", values); 
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
-    setSubmitting(false);     
+    setSubmitting(false);
   };
+
   return (
     <div>
-    <Formik
-  initialValues={{
-    email: "",
-    password: "",
-    name: "",
-    address: "",
-    phoneNumber: "",
-    age: "",
-    gender: "",
-    photo: null,
-  }}
-  validationSchema={validationSchema}
-  onSubmit={onSubmit}
->
-  {({ isSubmitting, isValid, dirty }) => (
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+          name: "",
+          address: "",
+          phoneNumber: "",
+          age: "",
+          gender: "",
+          bloodType: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {({ isSubmitting, isValid, dirty }) => (
           <Form>
             <img
               src="./images/smartphone (1).png"
@@ -97,33 +98,26 @@ const Signup = () => {
               <ErrorMessage name="gender" />
             </div>
             <div>
-              <label for="blood-type">Blood Type:</label>
-              <select id="blood-type" name="blood-type">
-                <option value="A">A+</option>
-                <option value="B">A-</option>
-                <option value="AB">B+</option>
-                <option value="O">B-</option>
-                <option value="O">AB+</option>
-                <option value="O">AB-</option>
-                <option value="O">O+</option>
-                <option value="O">O-</option>
-              </select>
+              <label htmlFor="bloodType">Blood Type:</label>
+              <Field as="select" id="bloodType" name="bloodType">
+                <option value=""></option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="AB">AB</option>
+                <option value="O">O</option>
+              </Field>
+              <ErrorMessage name="bloodType" />
             </div>
-            <div>
-              <label htmlFor="photo">Photo</label>
-              <Field type="file" name="photo" />
-              <ErrorMessage name="photo" />
-            </div>
+            {/*...your other form fields...*/}
             <Link to="/">
-  <button
-    className="btn8"
-    type="submit"
-    disabled={isSubmitting || !isValid || !dirty}
-  >
-    Submit
-  </button>
-</Link>
-
+              <button
+                className="btn8"
+                type="submit"
+                disabled={isSubmitting || !isValid || !dirty}
+              >
+                Submit
+              </button>
+            </Link>
           </Form>
         )}
       </Formik>

@@ -16,7 +16,7 @@ function ViewAllUsersPage() {
   // The 'useEffect' hook will run after the first render and fetch user data from the API
   useEffect(() => {
     axios
-      .get('https://jsonplaceholder.typicode.com/users')
+      .get('http://localhost:5000/api/v1/users')
       .then((res) => {
         // When the data is successfully fetched, update the user data state and set loading to false
         setUserDataFromApi(res.data);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './Login.css';
-import { Link, NavLink  } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -11,19 +11,31 @@ const validationSchema = Yup.object().shape({
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      const response = await fetch('http://localhost:5000/api/v1/auth/logIn', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
-      console.log(data);
+      console.log(data); // Check the response data
+
+      // Save the authentication data to local storage or state management
+      // Replace 'token' and 'user' with the appropriate data from the response
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      navigate('/InsideHome'); // Navigate to the home page after successful login
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div className='formbody'>
+    <div className="formbody">
       <Formik
         initialValues={{
           email: '',
@@ -43,7 +55,7 @@ const Login = () => {
       >
         {({ isSubmitting, errors, touched }) => (
           <Form>
-            <img  src="./images/smartphone(4).png" alt="your-image-description"></img>
+            <img src="./images/smartphone(4).png" alt="your-image-description" />
             <h1>Login</h1>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -54,29 +66,29 @@ const Login = () => {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <div className="input-group">
-                <Field 
-                  type={showPassword ? "text" : "password"} 
-                  name="password" 
-                  className={`form-control ${errors.password && touched.password ? 'is-invalid' : ''}`} 
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  className={`form-control ${
+                    errors.password && touched.password ? 'is-invalid' : ''
+                  }`}
                 />
                 <div className="input-group-append">
-                  <button 
-                    type="button" 
-                    className="btn btn-light" 
+                  <button
+                    type="button"
+                    className="btn btn-light"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? "Hide" : "Show"}
+                    {showPassword ? 'Hide' : 'Show'}
                   </button>
                 </div>
               </div>
               <ErrorMessage name="password" component="div" className="invalid-feedback" />
             </div>
-<Link to="/insideHome " >
-            <button  to="/insideHome " className='btn8' type="submit"  disabled={isSubmitting}>
+            <button className="btn8" type="submit" disabled={isSubmitting}>
               Login
             </button>
-</Link>
-            <Link to="/signupage">Don't have an account? Creat Your Account</Link>
+            <Link to="/signupage">Don't have an account? Create Your Account</Link>
           </Form>
         )}
       </Formik>
