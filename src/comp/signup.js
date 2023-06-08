@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 const Signup = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await axios.post("/api/signup", values);
+      const response = await axios.post("https://jsonplaceholder.typicode.com/users", values);
       console.log(response.data);
     } catch (error) {
       console.log(error);

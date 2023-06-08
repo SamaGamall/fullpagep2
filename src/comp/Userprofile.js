@@ -35,7 +35,7 @@ const Userprofile = () => {
             <div className="card1-1">
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
-                  <img src={userProfile.avatar} alt="Admin" className="rounded-circle" width={150} style={{ paddingTop: '1.2rem' }} />
+                  <img src={userProfile.Photo} alt="Admin" className="rounded-circle" width={150} style={{ paddingTop: '1.2rem' }} />
                   <div className="mt-3">
                     <h4>{userProfile.name}</h4>
                     <p className="text-secondary mb-1">{userProfile.role}</p>

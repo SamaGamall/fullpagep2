@@ -1,5 +1,7 @@
 import React from "react";
 
+import  { useState } from 'react';
+
 import Home from "./pages/home";
 import Profile from "./pages/profile";
 import { Routes, Route } from 'react-router-dom';
@@ -14,6 +16,19 @@ import Donationlocation from './pages/donationlocation';
 import ViewAllUsersPages from './pages/ViewAllUsersPages';
 
 function App() {
+  const [userProfile, setUserProfile] = useState({
+    id: null,
+    name: "",
+    role: "",
+    location: "",
+    email: "",
+    phone: "",
+    mobile: "",
+    address: null,
+    bloodType: "",
+    isActive: false,
+    Photo: "",
+  });
   return (
     <Routes>
       <Route path="/" element={<Home />} />

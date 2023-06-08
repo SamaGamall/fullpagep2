@@ -1,16 +1,34 @@
 import React, { useRef, useState } from 'react';
 import './editeprofile.css';
 
-
 const Editeprofile = () => {
   const fileInputRef = useRef(null);
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [updatedFullName, setUpdatedFullName] = useState('');
-  const [updatedEmail, setUpdatedEmail] = useState('');
+  const [fullName, setFullName] = useState('name');
+  const [email, setEmail] = useState('email');
+  const [phone, setPhone] = useState('');
+  const [bloodType, setBloodType] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [updatedFullName, setUpdatedFullName] = useState('name');
+  const [updatedEmail, setUpdatedEmail] = useState('email');
+  const [selectedImage, setSelectedImage] = useState('https://bootdey.com/img/Content/avatar/avatar7.png');
 
   const handleEditPhoto = () => {
     fileInputRef.current.click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.substr(0, 5) === 'image') {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        setSelectedImage(reader.result);
+      }
+      reader.readAsDataURL(file);
+    } else {
+      setSelectedImage(null);
+    }
   };
 
   const handleFullNameChange = (e) => {
@@ -21,27 +39,54 @@ const Editeprofile = () => {
     setUpdatedEmail(e.target.value);
   };
 
-  const handleUpdate = async () => {
-    if (updatedFullName !== '') {
-      setFullName(updatedFullName);
-    }
-    if (updatedEmail !== '') {
-      setEmail(updatedEmail);
-    }
-    setUpdatedFullName('');
-    setUpdatedEmail('');
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value);
+  };
 
+  const handleBloodTypeChange = (e) => {
+    setBloodType(e.target.value);
+  };
+
+  const handleStreetChange = (e) => {
+    setStreet(e.target.value);
+  };
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleStateChange = (e) => {
+    setState(e.target.value);
+  };
+
+  const handleUpdate = async () => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ fullName: updatedFullName, email: updatedEmail }),
+        body: JSON.stringify({
+          fullName: updatedFullName,
+          email: updatedEmail,
+          phone: phone,
+          bloodType: bloodType,
+          street: street,
+          city: city,
+          state: state
+        }),
       });
 
       if (response.ok) {
         console.log('Profile updated successfully');
+        if (updatedFullName !== '') {
+          setFullName(updatedFullName);
+        }
+        if (updatedEmail !== '') {
+          setEmail(updatedEmail);
+        }
+        setUpdatedFullName('');
+        setUpdatedEmail('');
       } else {
         console.error('Failed to update profile');
       }
@@ -49,7 +94,6 @@ const Editeprofile = () => {
       console.error('Error updating profile:', error);
     }
   };
-
 
   return (
     <div className="container1-2" style={{ overflow: 'hidden' }}>
@@ -61,7 +105,7 @@ const Editeprofile = () => {
                 <div className="user-profile">
                   <div className="user-avatar">
                     <img
-                      src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                      src={selectedImage}
                       alt="Maxwell Admin"
                       onClick={handleEditPhoto}
                       style={{ cursor: 'pointer' }}
@@ -73,6 +117,7 @@ const Editeprofile = () => {
                         id="photo"
                         accept="image/*"
                         style={{ display: 'none' }}
+                        onChange={handleImageChange}
                       />
                       <label htmlFor="photo">Edit</label>
                     </div>
@@ -125,24 +170,23 @@ const Editeprofile = () => {
                       className="form-control"
                       id="phone"
                       placeholder="Enter phone number"
+                      value={phone}
+                      onChange={handlePhoneChange}
                     />
                   </div>
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="form-group">
-                    <label htmlFor="blood">BloodType</label>
+                    <label htmlFor="blood">Blood Type</label>
                     <input
                       type="text"
                       className="form-control"
                       id="blood"
                       placeholder="Enter blood type"
+                      value={bloodType}
+                      onChange={handleBloodTypeChange}
                     />
                   </div>
-                </div>
-              </div>
-              <div className="row gutters">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 className="mt-3 mb-2 text-primary">Address</h6>
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div className="form-group">
@@ -152,6 +196,8 @@ const Editeprofile = () => {
                       className="form-control"
                       id="Street"
                       placeholder="Enter Street"
+                      value={street}
+                      onChange={handleStreetChange}
                     />
                   </div>
                 </div>
@@ -163,6 +209,8 @@ const Editeprofile = () => {
                       className="form-control"
                       id="ciTy"
                       placeholder="Enter City"
+                      value={city}
+                      onChange={handleCityChange}
                     />
                   </div>
                 </div>
@@ -174,11 +222,11 @@ const Editeprofile = () => {
                       className="form-control"
                       id="sTate"
                       placeholder="Enter State"
+                      value={state}
+                      onChange={handleStateChange}
                     />
                   </div>
                 </div>
-              </div>
-              <div className="row gutters">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div className="text-right">
                     <button
@@ -186,7 +234,6 @@ const Editeprofile = () => {
                       id="cancel"
                       name="cancel"
                       className="btn6"
-                      
                     >
                       Cancel
                     </button>
